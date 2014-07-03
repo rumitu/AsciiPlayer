@@ -19,22 +19,22 @@ public class ASCIIViewer {
         asciiIntensityTable = getASCIIIntensityTable();
     }
 
-    public static void main (String[] args) throws IOException, InterruptedException {
-        File imageFile = new File(args[0]);
-        int consolePixels = Integer.parseInt(args[1]);
-        ASCIIViewer viewer;
-        if (imageFile.isFile()) {
-            if (imageFile.toString().endsWith(".gif")) {
-                viewer = new ASCIIGifViewer(imageFile, consolePixels);
-            }
-            
-            else {
-                viewer = new ASCIIViewer(imageFile, consolePixels);
-            }
-            
-            viewer.printASCIIArt();
-        }
-    }
+//    public static void main (String[] args) throws IOException, InterruptedException {
+//        File imageFile = new File(args[0]);
+//        int consolePixels = Integer.parseInt(args[1]);
+//        ASCIIViewer viewer;
+//        if (imageFile.isFile()) {
+//            if (imageFile.toString().endsWith(".gif")) {
+//                viewer = new ASCIIGifViewer(imageFile, consolePixels);
+//            }
+//            
+//            else {
+//                viewer = new ASCIIViewer(imageFile, consolePixels);
+//            }
+//            
+//            viewer.printASCIIArt();
+//        }
+//    }
 
     protected void printASCIIArt() throws IOException, InterruptedException {
         String asciiImage = getASCIIImage();
@@ -101,12 +101,14 @@ public class ASCIIViewer {
     
     protected String translateToASCII(int pixelIntensity) {
         String symbol = null;
-        for (Integer uppedBound: asciiIntensityTable.keySet()) {
-            if (pixelIntensity < uppedBound) {
+        
+        for (Integer uppedBound: asciiIntensityTable.keySet()) {                      
+            if (pixelIntensity <= uppedBound) {
                 symbol = asciiIntensityTable.get(uppedBound).toString();
                 break;
             }
         }
+        
         return symbol.toString();
     }
 
