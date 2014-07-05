@@ -4,7 +4,7 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 
 public final class GifPlayer extends SequencePlayer {
-    private GifDecoder decoder;
+    private final GifDecoder decoder;
     private int lastFrameIndex;
 
     public GifPlayer(File sequenceFile, int consoleWidth) {

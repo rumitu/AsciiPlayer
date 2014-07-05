@@ -13,7 +13,8 @@ public abstract class SequencePlayer extends FilePlayer {
         this.consoleWidth = consoleWidth;        
     }
     
-    public void play() {
+    @Override
+	public void play() {
         ASCIIGenerator generator = new ASCIIGenerator(null);
         while ((currentFrame = getNextFrame()) != null) {
             generator.setImage(currentFrame);
